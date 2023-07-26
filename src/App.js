@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ChakraBaseProvider } from "@chakra-ui/react"
+import SocialProfileWithImage from './Card'
 
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -22,9 +24,11 @@ export default function App() {
   };
 
   return (
-    <>
-      <h1>Me apague quando for iniciar!</h1>
-      <p>Chame o Card aqui!</p>
-    </>
+    <ChakraBaseProvider>
+      {users.map((user)=>{
+        console.log(user)
+        return <SocialProfileWithImage user={user}/>
+      })} 
+    </ChakraBaseProvider>
   );
 }
